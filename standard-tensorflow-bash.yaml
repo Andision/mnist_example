@@ -19,20 +19,20 @@ metadata:
   annotations:
     gke-gcsfuse/volumes: "true"
 spec:
-  nodeSelector:
-    cloud.google.com/gke-accelerator: nvidia-tesla-t4
-  tolerations:
-  - key: "nvidia.com/gpu"
-    operator: "Exists"
-    effect: "NoSchedule"
+  # nodeSelector:
+  #   cloud.google.com/gke-accelerator: nvidia-tesla-t4
+  # tolerations:
+  # - key: "nvidia.com/gpu"
+  #   operator: "Exists"
+  #   effect: "NoSchedule"
   containers:
   - name: tensorflow
     image: tensorflow/tensorflow:latest-gpu 
     command: ["/bin/bash", "-c", "--"]
     args: ["while true; do sleep infinity; done;"]
-    resources:
-      limits:
-        nvidia.com/gpu: 1
+    # resources:
+    #   limits:
+    #     nvidia.com/gpu: 1
     volumeMounts:
     - name: gcs-fuse-csi-vol
       mountPath: /data
