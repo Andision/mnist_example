@@ -19,12 +19,12 @@ metadata:
   annotations:
     gke-gcsfuse/volumes: "true"
 spec:
-  # nodeSelector:
-  #   cloud.google.com/gke-accelerator: nvidia-tesla-t4
-  # tolerations:
-  # - key: "nvidia.com/gpu"
-  #   operator: "Exists"
-  #   effect: "NoSchedule"
+  nodeSelector:
+    cloud.google.com/gke-accelerator: nvidia-tesla-t4
+  tolerations:
+  - key: "nvidia.com/gpu"
+    operator: "Exists"
+    effect: "NoSchedule"
   containers:
   - name: tensorflow
     image: tensorflow/tensorflow:latest-gpu 
